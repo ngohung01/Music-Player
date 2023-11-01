@@ -20,6 +20,7 @@ const playlist = $(".playlist");
 console.log(btnVolume);
 const app = {
   currentIndexSong: 0,
+  test: 0,
   isPlaying: false,
   isRange: false,
   isRandoming: false,
@@ -273,7 +274,8 @@ const app = {
   loadConfig: function () {
     this.isRandoming = this.config["isRandoming"];
     this.isRepeating = this.config["isRepeating"];
-    this.currentIndexSong = Number(this.config["currentIndexSong"]);
+    if(Object.keys(this.config).length > 0)
+      this.currentIndexSong = Number(this.config["currentIndexSong"]);
     btnRandom.classList.toggle("active", this.isRandoming);
     btnRepeat.classList.toggle("active", this.isRepeating);
     this.scrollActiveSong();
@@ -332,8 +334,7 @@ const app = {
     //Tải cấu hình vào ứng dụng
     this.loadConfig();
     //Định nghĩa cho các thuộc tính Object
-    this.defindProperties();
-
+    this.defindProperties();   
     //Lắng nghe // xử lý các sự kiện (DOM events)
     this.handleEvents();
 
@@ -343,4 +344,7 @@ const app = {
     this.render();
   },
 };
+console.log(app.currentIndexSong)
+
 app.start();
+
